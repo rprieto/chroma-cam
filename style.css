@@ -1,0 +1,55 @@
+body {
+    font-family: Verdana;
+    font-size: 12px;
+}
+h1 {
+    font-size: 14px;
+    font-weight: bold;
+}
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+.row:after,
+.clearfix:after {
+    clear: both;
+}
+.row,
+.clearfix {
+    zoom: 1;
+}
+#output, #source, #backgroundvideo, #backgroundimage {
+    float: left;
+    display: inline;
+    padding: 4px 10px 4px 10px;
+}
+ul {
+    padding: 0;
+    margin: 0;
+}
+li {
+    list-style-type: none;
+}
+  
+#backgroundvideoselection, #videocontrols,#backgroundimageselection {
+    float: left;
+    display: inline;
+    padding-right: 40px;
+}
+video, canvas {
+    border: 1px solid #000;
+}
+#PlayPause {
+    width: 80px;
+}
+.instructions {
+    max-width: 400px;
+}
+  
