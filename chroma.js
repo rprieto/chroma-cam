@@ -169,31 +169,26 @@ function StartBackground() {
     if (mp4Supported) {
         videoExt = ".mp4";
     }
-    loadBackgroundVideo();
+    //loadBackgroundVideo();
 }
 
 function loadBackgroundVideo(e) {
-
-    if (!e) {
-        return;
-    }
     var value = $(e.currentTarget).data('file');
+    isBackgroundVideo = true;
+    var backgroundFileName = value + videoExt;
+    document.getElementById("backgroundvideo").style.display = "inline";
+    document.getElementById("backgroundimage").style.display = "none";
+    document.getElementById("videoBackgrounddata").src = backgroundFileName;
+    document.getElementById("videoBackgrounddata").loop = true
+    if (isPlaying) {
+        document.getElementById("videoBackgrounddata").play();
+    }
+}
 
-    var backgroundType= value.split("/");
-    if (backgroundType[0] == "videos") {
-        isBackgroundVideo = true;
-        var backgroundFileName = value + videoExt;
-        document.getElementById("backgroundvideo").style.display = "inline";
-        document.getElementById("backgroundimage").style.display = "none";
-        document.getElementById("videoBackgrounddata").src = backgroundFileName;
-        document.getElementById("videoBackgrounddata").loop = true
-        if (isPlaying)
-            document.getElementById("videoBackgrounddata").play();
-    }
-    else {
-        isBackgroundVideo = false;
-        document.getElementById("backgroundvideo").style.display = "none";
-        document.getElementById("backgroundimage").style.display = "inline";
-        document.getElementById("imageBackgrounddata").src = value;
-    }
+function loadBackgroundPhoto(e) {
+    var value = $(e.currentTarget).data('file');
+    isBackgroundVideo = false;
+    document.getElementById("backgroundvideo").style.display = "none";
+    document.getElementById("backgroundimage").style.display = "inline";
+    document.getElementById("imageBackgrounddata").src = value;
 }

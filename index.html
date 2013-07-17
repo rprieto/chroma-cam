@@ -43,7 +43,7 @@
         <section class="clearfix">
         
             <h2>Videos</h2>
-            <ul>
+            <ul id="videos">
                 <li data-file="videos/NewRow">New Row Street</li>
                 <li data-file="videos/NewRow">New Row Street</li>
                 <li data-file="videos/CoventGardenPlaza">Covent Garden Plaza</li>
@@ -51,7 +51,7 @@
             </ul>
 
             <h2>Photos</h2>
-            <ul>
+            <ul id="photos">
                 <li data-file="photos/background1.jpg">New Row Street</li>
                 <li data-file="photos/background2.jpg">New Row Street</li>
             </ul>
@@ -65,7 +65,8 @@
         <script src="chroma.js"></script>
         <script>
             $(document).ready(StartBackground);
-            $('li').click(loadBackgroundVideo);
+            $('#videos li').click(loadBackgroundVideo);
+            $('#photos li').click(loadBackgroundPhoto);
         </script>
 
     </body>
