@@ -8,65 +8,66 @@
     </head>
 
     <body>
-<h1>HTML 5 Real time video chroma key (green screen)</h1>
-<p class="instructions">Click "Play" to start the video playing, you will see the keyed video rendered, in the canvas output area. You can select a different background to render, either video or a static image.</p>
-<div id="wrapper" class="clearfix">
-    <div id="output">
-        <p>Canvas output</p>
-        <canvas id="videoscreen" width="320" height="180" >
-            <p>Sorry your browser does not support HTML5</p>
-        </canvas>
-    </div>
-    <div id="source">
-        <p>Green Screen Video</p>
-        <video style="" id="videodata" loop="loop" preload="auto" width="320" height="180">
-            <source src="Gav_green.mp4" type='video/mp4' />
-        </video>  
-    </div>
-    <div id="backgroundvideo">
-        <p>Background Video</p>
-        <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
-        </video>
-    </div>
-        <div id="backgroundimage">
-        <p>Background Image</p>
-        <img id="imageBackgrounddata" />
-    </div>
-</div>
-
-<div id="wrapper2" class="clearfix">
-    <div id="backgroundvideoselection">
-    <p>Background video selection</p>
-    <ul>
-        <li><input type="radio" id="newrow" name="background" value="videos/NewRow" onclick="loadBackgroundVideo();" checked=checked /><label for="newrow">New Row Street</label></li>
-        <li><input type="radio" id="coventgarden" name="background" value="videos/CoventGardenPlaza" onclick="loadBackgroundVideo();" /><label for="coventgarden">Covent Garden Plaza</label></li>
-        <li><input type="radio" id="coventgarden2" name="background" value="videos/CoventGardenPlaza2" onclick="loadBackgroundVideo();" /><label for="coventgarden2">Covent Garden Plaza 2</label></li>
-        <li><input type="radio" id="office" name="background" value="videos/Office_01" onclick="loadBackgroundVideo();" /><label for="office">Office</label></li>
-        <li><input type="radio" id="wall" name="background" value="videos/wall" onclick="loadBackgroundVideo();" /><label for="wall">Wall</label></li>
-        <li><input type="radio" id="churchbenches" name="background" value="videos/churchbenches" onclick="loadBackgroundVideo();" /><label for="churchbenches">Church benches</label></li>
-    </ul>
-    </div>
-    <div id="backgroundimageselection">
-         <p>Background image selection</p>
-    <ul>
-        <li><input type="radio" id="bg1" name="background" value="images/background1.jpg" onclick="loadBackgroundVideo();" /><label for="bg1">Train station</label></li>
-        <li><input type="radio" id="bg2" name="background" value="images/background2.jpg" onclick="loadBackgroundVideo();" /><label for="bg2">Road junction</label></li>
-        <li><input type="radio" id="bg3" name="background" value="images/background3.jpg" onclick="loadBackgroundVideo();" /><label for="bg3">Building site</label></li>
-        <li><input type="radio" id="bg4" name="background" value="images/background4.jpg" onclick="loadBackgroundVideo();" /><label for="bg3">Drawing train station</label></li>
         
-    </ul>
-    </div>
-    <div id="videocontrols">
-        <p>Video controls</p>
+        <h1>Live green screen</h1>
+        
+        <section class="clearfix">
+            
+            <div id="source">
+                <p>Green Screen Video</p>
+                <video style="" id="videodata" loop="loop" preload="auto" width="320" height="180">
+                    <source src="Gav_green.mp4" type='video/mp4' />
+                </video>
+            </div>
+            
+            <div id="output">
+                <p>Canvas output</p>
+                <canvas id="videoscreen" width="320" height="180" >
+                    <p>Sorry your browser does not support HTML5</p>
+                </canvas>
+            </div>
+            
+            <div id="backgroundvideo">
+                <p>Background Video</p>
+                <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
+                </video>
+            </div>
+            
+            <div id="backgroundimage">
+                <p>Background Image</p>
+                <img id="imageBackgrounddata" />
+            </div>
+            
+        </section>
+
+        <section class="clearfix">
+        
+            <h2>Videos</h2>
+            <ul>
+                <li data-file="videos/NewRow">New Row Street</li>
+                <li data-file="videos/NewRow">New Row Street</li>
+                <li data-file="videos/CoventGardenPlaza">Covent Garden Plaza</li>
+                <li data-file="videos/CoventGardenPlaza">Covent Garden Plaza</li>
+            </ul>
+
+            <h2>Photos</h2>
+            <ul>
+                <li data-file="photos/background1.jpg">New Row Street</li>
+                <li data-file="photos/background2.jpg">New Row Street</li>
+            </ul>
+        
+        </section>
+
+        <h2>Video controls</h2>
         <input id="PlayPause" type="button" onclick="Play();" value="Play" />
-    </div>
-</div>
 
-    <script src="chroma.js"></script>
-    <script>
-        window.addEventListener('load', StartBackground, false);
-    </script>
+        <script src="jquery-2.0.3.min.js"></script>
+        <script src="chroma.js"></script>
+        <script>
+            $(document).ready(StartBackground);
+            $('li').click(loadBackgroundVideo);
+        </script>
 
-</body>
+    </body>
 
 </html>

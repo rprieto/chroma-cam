@@ -172,24 +172,13 @@ function StartBackground() {
     loadBackgroundVideo();
 }
 
-function loadBackgroundVideo() {
-    var value = "";
-    var radioObj = document.getElementsByName("background");
-    if (!radioObj)
-        return "";
-    var radioLength = radioObj.length;
-    if (radioLength == undefined)
-        if (radioObj.checked)
-            value= radioObj.value;
-        else
-            value= "";
-    for (var i = 0; i < radioLength; i++) {
-        if (radioObj[i].checked) {
-            value= radioObj[i].value;
-        }
-    }
+function loadBackgroundVideo(e) {
 
-    //
+    if (!e) {
+        return;
+    }
+    var value = $(e.currentTarget).data('file');
+
     var backgroundType= value.split("/");
     if (backgroundType[0] == "videos") {
         isBackgroundVideo = true;
