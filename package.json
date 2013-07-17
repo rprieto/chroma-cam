@@ -1,0 +1,18 @@
+{
+  "name": "chroma-cam",
+  "version": "0.0.0",
+  "description": "Green-screen in your webcam",
+  "main": "server.js",
+  "keywords": [
+    "chroma",
+    "key",
+    "green",
+    "screen",
+    "webcam"
+  ],
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.3.4"
+  }
+}
