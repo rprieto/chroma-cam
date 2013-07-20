@@ -2,6 +2,7 @@ var path = require('path');
 var express = require('express');
 var browserify = require('browserify-middleware');
 var stylus = require('stylus');
+var hbs = require('express-hbs');
 
 var app = express();
 
@@ -12,6 +13,14 @@ app.use(stylus.middleware({
     src:  path.join(__dirname, 'assets'),
     dest: path.join(__dirname, 'builtAssets')
 }));
+
+app.engine('hbs', hbs.express3({}));
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
+
+app.get('/', function(req, res) {
+    res.render('index');
+});
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'builtAssets')));
