@@ -14,6 +14,7 @@
   "license": "BSD",
   "dependencies": {
     "express": "~3.3.4",
-    "browserify-middleware": "~1.14.1"
+    "browserify-middleware": "~1.14.1",
+    "stylus": "~0.34.1"
   }
 }
