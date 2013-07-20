@@ -1,0 +1,5 @@
+exclude = "{$exclude,node_modules,builtAssets}"
+include = "{$include,.tm_properties,.gitignore}"
+
+softTabs = true
+tabSize  = 4
