@@ -2,64 +2,59 @@
 <html>
 
     <head>
-        <title>Green screen</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Chroma cam</title>
+        <link rel="stylesheet" href="reset.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
 
     <body>
         
-        <h1>Live green screen</h1>
+        <ul id="backgrounds">
+            <li data-file="videos/NewRow"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="videos/NewRow"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="videos/CoventGardenPlaza"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="videos/CoventGardenPlaza"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
+            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
+        </ul>
         
-        <section class="clearfix">
-            
-            <div id="source">
-                <p>Green Screen Video</p>
-                <video style="" id="videodata" loop="loop" preload="auto" width="320" height="180">
-                    <source src="Gav_green.mp4" type='video/mp4' />
-                </video>
-            </div>
-            
-            <div id="output">
-                <p>Canvas output</p>
-                <canvas id="videoscreen" width="320" height="180" >
-                    <p>Sorry your browser does not support HTML5</p>
-                </canvas>
-            </div>
-            
+        <div id="controls">
+            <input id="PlayPause" type="button" onclick="Play();" value="Play" />
+        </div>
+        
+        <div id="video">
+            <!-- output -->
+            <canvas id="videoscreen" width="320" height="180">
+                <p>Sorry your browser does not support HTML5</p>
+            </canvas>
+            <!-- webcam -->
+            <video id="videodata" loop="loop" preload="auto" width="320" height="180">
+                <source src="Gav_green.mp4" type='video/mp4' />
+            </video>
+        </div>
+        
+        <div id="preview">
             <div id="backgroundvideo">
                 <p>Background Video</p>
                 <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
                 </video>
             </div>
-            
             <div id="backgroundimage">
                 <p>Background Image</p>
                 <img id="imageBackgrounddata" />
             </div>
-            
-        </section>
+        </div>
 
-        <section class="clearfix">
-        
-            <h2>Videos</h2>
-            <ul id="videos">
-                <li data-file="videos/NewRow">New Row Street</li>
-                <li data-file="videos/NewRow">New Row Street</li>
-                <li data-file="videos/CoventGardenPlaza">Covent Garden Plaza</li>
-                <li data-file="videos/CoventGardenPlaza">Covent Garden Plaza</li>
-            </ul>
-
-            <h2>Photos</h2>
-            <ul id="photos">
-                <li data-file="photos/background1.jpg">New Row Street</li>
-                <li data-file="photos/background2.jpg">New Row Street</li>
-            </ul>
-        
-        </section>
-
-        <h2>Video controls</h2>
-        <input id="PlayPause" type="button" onclick="Play();" value="Play" />
 
         <script src="jquery-2.0.3.min.js"></script>
         <script src="chroma.js"></script>

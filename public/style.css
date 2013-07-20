@@ -1,55 +1,48 @@
-body {
-    font-family: Verdana;
-    font-size: 12px;
+* {
+    box-sizing: border-box;
 }
-h1 {
-    font-size: 14px;
-    font-weight: bold;
+
+#backgrounds {
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    overflow: scroll;
+    position: absolute;
+    top: 0;
+    width: 14em;
 }
-.clearfix:before,
-.clearfix:after,
-.row:before,
-.row:after {
-    content: '\0020';
-    display: block;
+
+#backgrounds li {
+    border: 1px solid #333;
+    cursor: pointer;
+    float: left;
+    height: 7em;
     overflow: hidden;
-    visibility: hidden;
-    width: 0;
-    height: 0;
+    width: 7em;
 }
-.row:after,
-.clearfix:after {
-    clear: both;
+
+#video {
+    border: 1px solid green;
+    bottom: 0;
+    left: 14em;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
-.row,
-.clearfix {
-    zoom: 1;
+
+#output {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
-#output, #source, #backgroundvideo, #backgroundimage {
-    float: left;
-    display: inline;
-    padding: 4px 10px 4px 10px;
+
+#webcam {
+    border: 1px solid red;
+    height: 8em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 8em;
 }
-ul {
-    padding: 0;
-    margin: 0;
-}
-li {
-    list-style-type: none;
-}
-  
-#backgroundvideoselection, #videocontrols,#backgroundimageselection {
-    float: left;
-    display: inline;
-    padding-right: 40px;
-}
-video, canvas {
-    border: 1px solid #000;
-}
-#PlayPause {
-    width: 80px;
-}
-.instructions {
-    max-width: 400px;
-}
-  
