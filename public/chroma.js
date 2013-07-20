@@ -1,8 +1,4 @@
-var oggSupported = false;
-var webmSupported = false;
-var mp4Supported = false;
 var isPlaying = false;
-var videoExt = "";
 var isBackgroundVideo = true;
 
 function draw() {
@@ -126,36 +122,6 @@ function DrawVideoOnCanvas() {
         context.putImageData(imgData, 0, 0);
       
     }
-}      
-
-function SupportedVideoFormat() {
-    var video = document.createElement("video"); 
-    if (video.canPlayType('video/ogg; codecs="theora, vorbis"')) {
-        // it can play (maybe)!
-        oggSupported = true;
-    }
-    if (video.canPlayType('video/mp4; codecs="avc1.42E01E, mp4a.40.2"')) {
-        // it can play (maybe)!
-        mp4Supported = true;
-    }
-    if (video.canPlayType('video/webm; codecs="vp8, vorbis"')) {
-        // it can play (maybe)!
-        webmSupported = true;
-    }
-}
-
-function StartBackground() {
-    SupportedVideoFormat();
-    if (oggSupported) {
-        videoExt = ".ogv";
-    }
-    if (webmSupported) {
-        videoExt = ".webm"
-    }
-    if (mp4Supported) {
-        videoExt = ".mp4";
-    }
-    //loadBackgroundVideo();
 }
 
 function loadBackground(e) {
