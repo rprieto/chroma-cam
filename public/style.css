@@ -59,12 +59,10 @@ h1 {
     top: 0;
 }
 
-#output {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+#videoscreen {
+    border: 2px solid #000;
+    display: block;
+    margin: 5em auto 0 auto;
 }
 
 #preview {
