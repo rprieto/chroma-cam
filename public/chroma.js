@@ -19,22 +19,6 @@ function draw() {
 }
 
 
-function Play() {
-    if (!isPlaying) {
-        // document.getElementById("videodata").play();
-        document.getElementById("videoBackgrounddata").play();
-        $('.controls').addClass('playing');
-        isPlaying = true;
-    }
-    else {
-        // document.getElementById("videodata").pause();
-        document.getElementById("videoBackgrounddata").pause();
-        $('.controls').removeClass('playing');
-        isPlaying = false;
-    }
-    draw();
-}
-
 function DrawVideoOnCanvas() {
     var webcam = $('#webcam');
     var object = document.getElementById("webcam")
@@ -46,8 +30,8 @@ function DrawVideoOnCanvas() {
     else {
         backgroundObject = document.getElementById("imageBackgrounddata");
     }
-    var width = webcam.width() * 2;
-    var height = webcam.height() * 2;
+    var width = webcam.width() * 3;
+    var height = webcam.height() * 3;
     var canvas = document.getElementById("videoscreen");
     canvas.setAttribute('width', width);
     canvas.setAttribute('height', height);
@@ -182,6 +166,7 @@ function loadBackground(e) {
     } else {
         loadBackgroundPhoto(file);
     }
+    document.getElementById("videoBackgrounddata").play();
 }
 
 function loadBackgroundVideo(file) {

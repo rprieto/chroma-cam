@@ -14,6 +14,7 @@ aside {
 
 header {
     background-color: #fff;
+    padding: 1em 0;
     text-align: center;
 }
 
@@ -22,24 +23,7 @@ h1 {
     font-size: 1.4em;
     font-weight: bold;
     margin-top: 0.5em;
-    padding: 0.5em;
-}
-
-header .controls .icon {
-    display: inline-block;
-    margin: 1em 0.5em;
-}
-
-header .controls .icon-pause {
-    display: none;
-}
-
-header .controls.playing .icon-pause {
-    display: inline-block;
-}
-
-header .controls.playing .icon-play {
-    display: none;
+    margin-bottom: 0.5em;
 }
 
 #backgrounds li {
@@ -48,12 +32,22 @@ header .controls.playing .icon-play {
     float: left;
     height: 7em;
     overflow: hidden;
+    position: relative;
     width: 7em;
 }
 
 #backgrounds img {
     height: 7em;
     width: 7em;
+}
+
+#backgrounds .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0.4em 0.6em 0.3em 0.8em;
+    background-color: #000;
+    color: #fff;
 }
 
 #video {
@@ -74,13 +68,12 @@ header .controls.playing .icon-play {
 }
 
 #preview {
-    border-bottom: 2px dashed #000;
-    border-right: 2px dashed #000;
+    border: 2px dashed #000;
     height: 6em;
     position: absolute;
-    left: 14em;
+    left: 15em;
     overflow: hidden;
-    top: 0;
+    top: 1em;
     width: 8em;
 }
 
@@ -90,11 +83,10 @@ header .controls.playing .icon-play {
 }
 
 #webcam {
-    border-bottom: 2px dashed #000;
-    border-left: 2px dashed #000;
+    border: 2px dashed #000;
     height: 6em;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 1em;
+    top: 1em;
     width: 8em;
 }
