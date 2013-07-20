@@ -64,24 +64,20 @@
         </div>
 
         <script src="jquery-2.0.3.min.js"></script>
-        <script src="script.js"></script>
-        <script src="chroma.js"></script>
+        <script src="/js/script.js"></script>
         
         <script>
             $(document).ready(function() {
                 
-                $('#backgrounds li').click(loadBackground);
-                
-                function failedToGetWebcam(e) {
-                    alert('Could not access webcam');
-                };
-
                 navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
                     var video = document.querySelector('#webcam');
                     video.src = window.URL.createObjectURL(localMediaStream);
-                }, failedToGetWebcam);
+                }, function() {
+                    alert('Could not access webcam');
+                });
                 
-                draw();
+                $('#backgrounds li').click(window.ChromaCam.loadBackground);
+                window.ChromaCam.start();
                 
             });
         </script>

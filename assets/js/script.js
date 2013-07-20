@@ -1,3 +1,22 @@
+var chroma = require('./chroma');
+
+window.ChromaCam = {};
+
+window.ChromaCam.start = function() {
+    draw();
+};
+
+window.ChromaCam.loadBackground = function(e) {
+    var type = $(e.currentTarget).data('type');
+    var file = $(e.currentTarget).data('file');
+    if (type === 'video') {
+        loadBackgroundVideo(file);
+    } else {
+        loadBackgroundPhoto(file);
+    }
+    document.getElementById("videoBackgrounddata").play();
+};
+
 var isPlaying = false;
 var isBackgroundVideo = true;
 
@@ -37,20 +56,9 @@ function DrawVideoOnCanvas() {
         var imgDataNormal = context.getImageData(0, 0, width, height);
         
         var imgData = context.createImageData(width, height);
-        removeColor(imgData, imgDataNormal, imgBackgroundData, 25, 90, 60);
+        chroma.removeColor(imgData, imgDataNormal, imgBackgroundData, 25, 90, 60);
         context.putImageData(imgData, 0, 0);
     }
-}
-
-function loadBackground(e) {
-    var type = $(e.currentTarget).data('type');
-    var file = $(e.currentTarget).data('file');
-    if (type === 'video') {
-        loadBackgroundVideo(file);
-    } else {
-        loadBackgroundPhoto(file);
-    }
-    document.getElementById("videoBackgrounddata").play();
 }
 
 function loadBackgroundVideo(file) {

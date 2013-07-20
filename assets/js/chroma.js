@@ -1,5 +1,5 @@
 
-function removeColor(imgData, imgDataNormal, imgBackgroundData, selectedR, selectedG, selectedB) {
+exports.removeColor = function(imgData, imgDataNormal, imgBackgroundData, selectedR, selectedG, selectedB) {
 
     for (i = 0; i < imgData.width * imgData.height * 4; i += 4) {
         var r = imgDataNormal.data[i + 0];
