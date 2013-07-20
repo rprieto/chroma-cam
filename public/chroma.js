@@ -21,22 +21,23 @@ function draw() {
 
 function Play() {
     if (!isPlaying) {
-        document.getElementById("videodata").play();
+        // document.getElementById("videodata").play();
         document.getElementById("videoBackgrounddata").play();
-        document.getElementById("PlayPause").value = "Pause";
-        isPlaying = true;               
+        $('.controls').addClass('playing');
+        isPlaying = true;
     }
     else {
-        document.getElementById("videodata").pause();
+        // document.getElementById("videodata").pause();
         document.getElementById("videoBackgrounddata").pause();
-        document.getElementById("PlayPause").value = "Play";
-        isPlaying = false;                
+        $('.controls').removeClass('playing');
+        isPlaying = false;
     }
     draw();
 }
 
 function DrawVideoOnCanvas() {
-    var object = document.getElementById("videodata")
+    var webcam = $('#webcam');
+    var object = document.getElementById("webcam")
 
     var backgroundObject;
     if (isBackgroundVideo) {
@@ -45,14 +46,15 @@ function DrawVideoOnCanvas() {
     else {
         backgroundObject = document.getElementById("imageBackgrounddata");
     }
-    var width = object.width;
-    var height = object.height;
+    var width = webcam.width() * 2;
+    var height = webcam.height() * 2;
     var canvas = document.getElementById("videoscreen");
     canvas.setAttribute('width', width);
     canvas.setAttribute('height', height);
     if (canvas.getContext) {
         var context = canvas.getContext('2d');
         context.drawImage(backgroundObject, 0, 0, width, height);
+        
         var imgBackgroundData = context.getImageData(0, 0, width, height);
         context.drawImage(object, 0, 0, width, height);
         imgDataNormal = context.getImageData(0, 0, width, height);
@@ -172,23 +174,29 @@ function StartBackground() {
     //loadBackgroundVideo();
 }
 
-function loadBackgroundVideo(e) {
-    var value = $(e.currentTarget).data('file');
-    isBackgroundVideo = true;
-    var backgroundFileName = value + videoExt;
-    document.getElementById("backgroundvideo").style.display = "inline";
-    document.getElementById("backgroundimage").style.display = "none";
-    document.getElementById("videoBackgrounddata").src = backgroundFileName;
+function loadBackground(e) {
+    var type = $(e.currentTarget).data('type');
+    var file = $(e.currentTarget).data('file');
+    if (type === 'video') {
+        loadBackgroundVideo(file);
+    } else {
+        loadBackgroundPhoto(file);
+    }
+}
+
+function loadBackgroundVideo(file) {
+    document.getElementById("videoBackgrounddata").style.display = "inline";
+    document.getElementById("imageBackgrounddata").style.display = "none";
+    document.getElementById("videoBackgrounddata").src = file;
     document.getElementById("videoBackgrounddata").loop = true
     if (isPlaying) {
         document.getElementById("videoBackgrounddata").play();
     }
 }
 
-function loadBackgroundPhoto(e) {
-    var value = $(e.currentTarget).data('file');
+function loadBackgroundPhoto(file) {
     isBackgroundVideo = false;
-    document.getElementById("backgroundvideo").style.display = "none";
-    document.getElementById("backgroundimage").style.display = "inline";
-    document.getElementById("imageBackgrounddata").src = value;
+    document.getElementById("videoBackgrounddata").style.display = "none";
+    document.getElementById("imageBackgrounddata").style.display = "inline";
+    document.getElementById("imageBackgrounddata").src = file;
 }

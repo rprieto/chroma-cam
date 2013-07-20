@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-#backgrounds {
+aside {
     bottom: 0;
     left: 0;
     height: 100%;
@@ -10,6 +10,36 @@
     position: absolute;
     top: 0;
     width: 14em;
+}
+
+header {
+    background-color: #fff;
+    text-align: center;
+}
+
+h1 {
+    font-family: monospace;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 0.5em;
+    padding: 0.5em;
+}
+
+header .controls .icon {
+    display: inline-block;
+    margin: 1em 0.5em;
+}
+
+header .controls .icon-pause {
+    display: none;
+}
+
+header .controls.playing .icon-pause {
+    display: inline-block;
+}
+
+header .controls.playing .icon-play {
+    display: none;
 }
 
 #backgrounds li {
@@ -21,8 +51,13 @@
     width: 7em;
 }
 
+#backgrounds img {
+    height: 7em;
+    width: 7em;
+}
+
 #video {
-    border: 1px solid green;
+    border-left: 5px solid #000;
     bottom: 0;
     left: 14em;
     position: absolute;
@@ -38,9 +73,26 @@
     top: 0;
 }
 
+#preview {
+    border-bottom: 2px dashed #000;
+    border-right: 2px dashed #000;
+    height: 6em;
+    position: absolute;
+    left: 14em;
+    overflow: hidden;
+    top: 0;
+    width: 8em;
+}
+
+#preview img {
+    height: 6em;
+    width: 8em;
+}
+
 #webcam {
-    border: 1px solid red;
-    height: 8em;
+    border-bottom: 2px dashed #000;
+    border-left: 2px dashed #000;
+    height: 6em;
     position: absolute;
     right: 0;
     top: 0;

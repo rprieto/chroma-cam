@@ -5,63 +5,79 @@
         <title>Chroma cam</title>
         <link rel="stylesheet" href="reset.css" type="text/css" />
         <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="font-awesome.min.css" type="text/css" />
     </head>
 
     <body>
         
-        <ul id="backgrounds">
-            <li data-file="videos/NewRow"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="videos/NewRow"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="videos/CoventGardenPlaza"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="videos/CoventGardenPlaza"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background1.jpg"><img src="http://placekitten.com/200/200" /></li>
-            <li data-file="photos/background2.jpg"><img src="http://placekitten.com/200/200" /></li>
-        </ul>
-        
-        <div id="controls">
-            <input id="PlayPause" type="button" onclick="Play();" value="Play" />
-        </div>
+        <aside>
+
+            <header>
+                <h1>Chroma cam</h1>
+                <p>Select a background</p>
+                <div class="controls">
+                    <i class="icon icon-pause"></i>
+                    <i class="icon icon-play"></i>
+                </div>
+            </header>
+
+            <ul id="backgrounds">
+                <li data-type="video" data-file="videos/NewRow.mp4"><img src="http://placekitten.com/200/200" /></li>
+                <li data-type="video" data-file="videos/NewRow.mp4"><img src="http://placekitten.com/200/200" /></li>
+                <li data-type="video" data-file="videos/CoventGardenPlaza.mp4"><img src="http://placekitten.com/200/200" /></li>
+                <li data-type="video" data-file="videos/CoventGardenPlaza.mp4"><img src="http://placekitten.com/200/200" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+            </ul>
+
+        </aside>
         
         <div id="video">
             <!-- output -->
             <canvas id="videoscreen" width="320" height="180">
                 <p>Sorry your browser does not support HTML5</p>
             </canvas>
-            <!-- webcam -->
-            <video id="videodata" loop="loop" preload="auto" width="320" height="180">
-                <source src="Gav_green.mp4" type='video/mp4' />
-            </video>
+            <video id="webcam" class="videostream" autoplay=""></video>
         </div>
         
         <div id="preview">
-            <div id="backgroundvideo">
-                <p>Background Video</p>
-                <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
-                </video>
-            </div>
-            <div id="backgroundimage">
-                <p>Background Image</p>
-                <img id="imageBackgrounddata" />
-            </div>
+            <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
+            </video>
+            <img id="imageBackgrounddata" />
         </div>
-
 
         <script src="jquery-2.0.3.min.js"></script>
         <script src="chroma.js"></script>
         <script>
-            $(document).ready(StartBackground);
-            $('#videos li').click(loadBackgroundVideo);
-            $('#photos li').click(loadBackgroundPhoto);
+            $(document).ready(function() {
+                $('#backgrounds li').click(loadBackground);
+                $('.controls .icon').click(Play);
+                // $('#videoscreen').width($('#video').width());
+//                 $('#videoscreen').height($('#video').height());
+                StartBackground();
+                
+                
+                var onFailSoHard = function(e) {
+                    console.log('Reeeejected!', e);
+                  };
+
+                  // Not showing vendor prefixes.
+                  navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
+                    var video = document.querySelector('#webcam');
+                    video.src = window.URL.createObjectURL(localMediaStream);
+                  }, onFailSoHard);
+                  
+            });
         </script>
 
     </body>
