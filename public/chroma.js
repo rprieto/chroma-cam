@@ -136,6 +136,7 @@ function loadBackground(e) {
 }
 
 function loadBackgroundVideo(file) {
+    isBackgroundVideo = true;
     document.getElementById("videoBackgrounddata").style.display = "inline";
     document.getElementById("imageBackgrounddata").style.display = "none";
     document.getElementById("videoBackgrounddata").src = file;
