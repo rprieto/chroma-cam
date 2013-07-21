@@ -14,3 +14,12 @@ Requires Node.js 0.8+
 npm install
 npm start
 ```
+
+# heroku
+
+The project requires `ffmpeg` to create video thumbnails.
+It uses a custom buildpack, so you need to specify it in your ENV config:
+
+```
+heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi
+```
