@@ -1,11 +1,14 @@
 @import 'reset'
+@import 'header'
+@import 'sidebar'
+@import 'popup'
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    background-color: #000;
+    background-color: #eee;
     font-size: 1.2em;
 }
 
@@ -18,99 +21,8 @@ a:hover {
     color: #ff4800;
 }
 
-nav {
-    float:right;
-}
-
-nav li {
-    display: inline-block;
-    margin-right: 0.5em;
-    padding: 0.7em;
-}
-
-nav li .icon {
-    margin-right: 0.5em;
-}
-
-header .clear {
-    clear: both;
-}
-
-aside {
-    background-color: #fff;
-    bottom: 0;
-    color: #333;
-    left: 0;
-    overflow: scroll;
-    padding: 1em 3em;
-    position: absolute;
-    top: 4em;
-    width: 28em;
-    z-index: 0;
-}
-
 #main {
     margin-left: 28em;
-}
-
-header {
-    background-color: #eee;
-    border-bottom: 1px solid #999;
-    padding: 0.5em 0 0.5em 2em;
-    font-size: 1.2em;
-    position: relative;
-    z-index: 1;
-}
-
-h1 {
-    color: #333;
-    float: left;
-    font-weight: bold;
-    padding: 0.7em;
-}
-
-#instructions {
-    ol {
-        list-style-type: decimal;
-        margin: 1em;
-    }
-    li {
-        line-height: 1.2em;
-        margin-bottom: 0.7em;
-    }
-    .icon-sign-blank {
-        color: #60cc30;
-    }
-    .icon-hand-down {
-        display: block;
-        font-size: 2em;
-        margin: 1em 0;
-        text-align: center;
-    }
-}
-
-#backgrounds li {
-    border: 1px solid #fff;
-    cursor: pointer;
-    display: inline-block;
-    height: 7em;
-    overflow: hidden;
-    position: relative;
-    width: 7em;
-}
-
-#backgrounds img {
-    height: 7em;
-    width: 7em;
-}
-
-#backgrounds .icon {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    padding: 0.4em 0.6em 0.3em 0.8em;
-    background-color: #000;
-    color: #fff;
 }
 
 #source {
@@ -118,25 +30,6 @@ h1 {
 }
 
 #output {
-    background-color: #eee;
-    border: 1px solid #999;
     display: block;
     margin: 0 auto;
-}
-
-.white-popup-block {
-  background: #FFF;
-  padding: 20px 30px;
-  text-align: left;
-  max-width: 650px;
-  margin: 40px auto;
-  position: relative;
-}
-
-button.mfp-close {
-    color: #000;
-}
-
-.white-popup-block ul {
-    margin-top: 1em;
 }
