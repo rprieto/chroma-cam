@@ -1,80 +1,69 @@
 var chroma = require('./chroma');
+var blend  = null;
 
 window.ChromaCam = {};
 
 window.ChromaCam.start = function() {
-    draw();
+    openWebcam();
+    setupVideoProcessing();
 };
 
 window.ChromaCam.loadBackground = function(e) {
-    var type = $(e.currentTarget).data('type');
-    var file = $(e.currentTarget).data('file');
+    // var type = $(e.currentTarget).data('type');
+    // var file = $(e.currentTarget).data('file');
+    var type = e.currentTarget.getAttribute('data-type');
+    var file = e.currentTarget.getAttribute('data-file');
     if (type === 'video') {
         loadBackgroundVideo(file);
     } else {
         loadBackgroundPhoto(file);
     }
-    document.getElementById("videoBackgrounddata").play();
 };
 
-var isPlaying = false;
-var isBackgroundVideo = true;
-
-function draw() {
-    if (window.requestAnimationFrame) window.requestAnimationFrame(draw);
-    else if (window.msRequestAnimationFrame) window.msRequestAnimationFrame(draw);
-    else if (window.mozRequestAnimationFrame) window.mozRequestAnimationFrame(draw);
-    else if (window.webkitRequestAnimationFrame) window.webkitRequestAnimationFrame(draw);
-    else setTimeout(draw, 16.7);
-    DrawVideoOnCanvas();
+function openWebcam() {
+    navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
+        var video = document.querySelector('#webcam');
+        video.src = window.URL.createObjectURL(localMediaStream);
+    }, function() {
+        alert('Could not access webcam');
+    });
 }
 
-
-function DrawVideoOnCanvas() {
-    var webcam = $('#webcam');
-    var object = document.getElementById("webcam")
-
-    var backgroundObject;
-    if (isBackgroundVideo) {
-        backgroundObject = document.getElementById("videoBackgrounddata");
-    }
-    else {
-        backgroundObject = document.getElementById("imageBackgrounddata");
-    }
-    var width = webcam.width() * 3;
-    var height = webcam.height() * 3;
-    var canvas = document.getElementById("videoscreen");
-    canvas.setAttribute('width', width);
-    canvas.setAttribute('height', height);
+function setupVideoProcessing() {
+    var seriously = new Seriously();
     
-    if (canvas.getContext) {
-        var context = canvas.getContext('2d');
-        context.drawImage(backgroundObject, 0, 0, width, height);
-        var imgBackgroundData = context.getImageData(0, 0, width, height);
-        
-        context.drawImage(object, 0, 0, width, height);
-        var imgDataNormal = context.getImageData(0, 0, width, height);
-        
-        var imgData = context.createImageData(width, height);
-        chroma.removeColor(imgData, imgDataNormal, imgBackgroundData, 25, 90, 60);
-        context.putImageData(imgData, 0, 0);
-    }
+    var chroma = seriously.effect('chroma');
+    chroma.source = '#webcam';
+    chroma.weight = 1.32;
+    chroma.balance = 0;
+    chroma.screen = 'rgb(77, 239, 41)';
+    chroma.clipWhite = 0.85;
+    chroma.clipBlack = 0.5125;
+
+    blend = seriously.effect('blend');
+    blend.top = chroma;
+    blend.bottom = document.querySelector('#backgroundVideo');
+
+    var target = seriously.target('#output');
+    target.source = blend;
+    
+    seriously.go();
 }
 
 function loadBackgroundVideo(file) {
-    isBackgroundVideo = true;
-    document.getElementById("videoBackgrounddata").style.display = "inline";
-    document.getElementById("imageBackgrounddata").style.display = "none";
-    document.getElementById("videoBackgrounddata").src = file;
-    document.getElementById("videoBackgrounddata").loop = true
-    if (isPlaying) {
-        document.getElementById("videoBackgrounddata").play();
+    var current = document.querySelector('#backgroundVideo');
+    current.src = file;
+    current.loop = true;
+    current.play();
+    if (blend) {
+        blend.bottom = current;
     }
 }
 
 function loadBackgroundPhoto(file) {
-    isBackgroundVideo = false;
-    document.getElementById("videoBackgrounddata").style.display = "none";
-    document.getElementById("imageBackgrounddata").style.display = "inline";
-    document.getElementById("imageBackgrounddata").src = file;
+    var current = document.querySelector('#backgroundPhoto');
+    current.src = file;
+    if (blend) {
+        blend.bottom = current;
+    }
 }

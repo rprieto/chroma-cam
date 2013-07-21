@@ -5,13 +5,16 @@
 }
 
 aside {
-    bottom: 0;
-    left: 0;
-    height: 100%;
+    bottom: 1em;
+    left: 1em;
     overflow: scroll;
     position: absolute;
-    top: 0;
+    top: 1em;
     width: 14em;
+}
+
+#main {
+    margin-left: 15em;
 }
 
 header {
@@ -22,14 +25,14 @@ header {
 
 h1 {
     font-family: monospace;
-    font-size: 1.4em;
+    font-size: 2em;
     font-weight: bold;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
 
 #backgrounds li {
-    border: 1px solid #333;
+    border: 1px solid #fff;
     cursor: pointer;
     float: left;
     height: 7em;
@@ -52,41 +55,12 @@ h1 {
     color: #fff;
 }
 
-#video {
-    border-left: 5px solid #000;
-    bottom: 0;
-    left: 14em;
-    position: absolute;
-    right: 0;
-    top: 0;
+#source {
+    display: none;
 }
 
-#videoscreen {
-    border: 2px solid #000;
+#output {
     display: block;
-    margin: 5em auto 0 auto;
+    margin: 0 auto;
 }
 
-#preview {
-    border: 2px dashed #000;
-    height: 6em;
-    position: absolute;
-    left: 15em;
-    overflow: hidden;
-    top: 1em;
-    width: 8em;
-}
-
-#preview img {
-    height: 6em;
-    width: 8em;
-}
-
-#webcam {
-    border: 2px dashed #000;
-    height: 6em;
-    position: absolute;
-    right: 1em;
-    top: 1em;
-    width: 8em;
-}

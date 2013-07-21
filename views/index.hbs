@@ -9,74 +9,73 @@
 
     <body>
         
-        <aside>
+        <div id="main">
 
             <header>
                 <h1>Chroma cam</h1>
-                <p>Select a background</p>
             </header>
 
+            <canvas id="output" width="640" height="480">
+                <p>Sorry your browser does not support HTML5</p>
+            </canvas>
+
+        </div>
+        
+        <aside>
+
             <ul id="backgrounds">
-                <li data-type="video" data-file="videos/NewRow.mp4">
+                <li data-type="video" data-file="/videos/NewRow.mp4">
                     <i class="icon icon-play"></i>
                     <img src="http://placekitten.com/200/200" />
                 </li>
-                <li data-type="video" data-file="videos/NewRow.mp4">
+                <li data-type="video" data-file="/videos/NewRow.mp4">
                     <i class="icon icon-play"></i>
                     <img src="http://placekitten.com/200/200" />
                 </li>
-                <li data-type="video" data-file="videos/CoventGardenPlaza.mp4">
+                <li data-type="video" data-file="/videos/CoventGardenPlaza.mp4">
                     <i class="icon icon-play"></i>
                     <img src="http://placekitten.com/200/200" />
                 </li>
-                <li data-type="video" data-file="videos/CoventGardenPlaza.mp4">
+                <li data-type="video" data-file="/videos/CoventGardenPlaza.mp4">
                     <i class="icon icon-play"></i>
                     <img src="http://placekitten.com/200/200" />
                 </li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
+                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
             </ul>
 
         </aside>
         
-        <div id="video">
-            <canvas id="videoscreen" width="320" height="180">
-                <p>Sorry your browser does not support HTML5</p>
-            </canvas>
-            <video id="webcam" class="videostream" autoplay=""></video>
+        <div id="source">
+            <video id="webcam" autoplay=""></video>
+            <video id="backgroundVideo" loop="loop" preload="auto"></video>
+            <img id="backgroundPhoto" />
         </div>
         
-        <div id="preview">
-            <video style="" id="videoBackgrounddata" loop="loop" preload="auto" width="320" height="180">
-            </video>
-            <img id="imageBackgrounddata" />
-        </div>
-
-        <script src="/js/jquery-2.0.3.min.js"></script>
+        <script src="/js/seriously.js"></script>
+        <script src="/js/seriously.chroma.js"></script>
+        <script src="/js/seriously.blend.js"></script>
         <script src="/js/script.js"></script>
         
         <script>
-            $(document).ready(function() {
+            document.addEventListener('DOMContentLoaded', function() {
                 
-                navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
-                    var video = document.querySelector('#webcam');
-                    video.src = window.URL.createObjectURL(localMediaStream);
-                }, function() {
-                    alert('Could not access webcam');
-                });
-                
-                $('#backgrounds li').click(window.ChromaCam.loadBackground);
                 window.ChromaCam.start();
+                
+                var bgs = document.querySelectorAll('#backgrounds li');
+                [].forEach.call(bgs, function(el) {
+                    el.addEventListener('click', window.ChromaCam.loadBackground, false);
+                });
                 
             });
         </script>
