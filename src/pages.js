@@ -9,10 +9,38 @@ var attribution = [
     'http://www.flickr.com/photos/9678460@N07/'
 ];
 
+var videos = [
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+    { url: '', thumbnail: 'http://placekitten.com/200/200' },
+]
+
+var photos = [
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+    { url: 'http://placekitten.com/200/200' },
+];
+
 exports.indexPage = function(req, res) {
 
     res.render('index', {
-        attribution: attribution
+        videos: videos,
+        photos: photos,
+        attribution: attribution,
     });
 
 };

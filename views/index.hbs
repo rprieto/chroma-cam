@@ -40,34 +40,17 @@
             </section>
             
             <ul id="backgrounds">
-                <li data-type="video" data-file="/videos/NewRow.mp4">
-                    <i class="icon icon-play"></i>
-                    <img src="http://placekitten.com/200/200" />
-                </li>
-                <li data-type="video" data-file="/videos/NewRow.mp4">
-                    <i class="icon icon-play"></i>
-                    <img src="http://placekitten.com/200/200" />
-                </li>
-                <li data-type="video" data-file="/videos/CoventGardenPlaza.mp4">
-                    <i class="icon icon-play"></i>
-                    <img src="http://placekitten.com/200/200" />
-                </li>
-                <li data-type="video" data-file="/videos/CoventGardenPlaza.mp4">
-                    <i class="icon icon-play"></i>
-                    <img src="http://placekitten.com/200/200" />
-                </li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background1.jpg"><img src="photos/background1.jpg" /></li>
-                <li data-type="photo" data-file="/photos/background2.jpg"><img src="photos/background2.jpg" /></li>
+                {{#each videos}}
+                    <li data-type="video" data-file="{{url}}">
+                        <i class="icon icon-play"></i>
+                        <img src="{{thumbnail}}" />
+                    </li>
+                {{/each}}
+                {{#each photos}}
+                    <li data-type="photo" data-file="{{url}}">
+                        <img src="{{url}}" />
+                    </li>
+                {{/each}}
             </ul>
 
         </aside>
