@@ -23,5 +23,6 @@ app.get('/', pages.indexPage);
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'builtAssets')));
+app.use(express.static(path.join(__dirname, 'data')));
 
 app.listen(process.env.PORT || 3000);

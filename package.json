@@ -16,6 +16,8 @@
     "express": "~3.3.4",
     "browserify-middleware": "~1.14.1",
     "stylus": "~0.34.1",
-    "express-hbs": "~0.2.0"
+    "express-hbs": "~0.2.0",
+    "wrench": "~1.5.1",
+    "video-thumb": "0.0.2"
   }
 }

@@ -1,3 +1,6 @@
+var fs = require('fs');
+var wrench = require('wrench');
+var videoThumb = require('video-thumb');
 
 var attribution = [
     'http://www.flickr.com/photos/ehole/',
@@ -9,31 +12,29 @@ var attribution = [
     'http://www.flickr.com/photos/9678460@N07/'
 ];
 
-var videos = [
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-    { url: '', thumbnail: 'http://placekitten.com/200/200' },
-]
+var DATA_FOLDER = __dirname + '/../data';
 
-var photos = [
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-    { url: 'http://placekitten.com/200/200' },
-];
+wrench.readdirSyncRecursive(DATA_FOLDER + '/videos').forEach(function(path) {
+    var thumbnail = DATA_FOLDER + '/videos/' + path + '.png';
+    if (!fs.existsSync(thumbnail)) {
+        videoThumb.extract(DATA_FOLDER + '/videos/' + path, DATA_FOLDER + '/videos/' + path + '.png', '00:00:01', '200x200', function() {
+        });
+    }
+});
+
+function isVideo(path) { return path.match(/\.mp4$/); }
+var videos = wrench.readdirSyncRecursive(DATA_FOLDER + '/videos').filter(isVideo).map(function(path) {
+    return {
+        url: '/videos/' + path,
+        thumbnail: '/videos/' + path + '.png'
+    };
+});
+
+var photos = wrench.readdirSyncRecursive(DATA_FOLDER + '/photos').map(function(path) {
+    return {
+        url: '/photos/' + path
+    };
+});
 
 exports.indexPage = function(req, res) {
 
