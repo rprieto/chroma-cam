@@ -66,11 +66,11 @@
             All backgrounds used in this demo are under Creative Commons license.
             Many thanks to the following photographers:
             <ul>
-                <li><a href="http://www.flickr.com/photos/ehole/">http://www.flickr.com/photos/ehole/</a></li>
-                <li><a href="http://www.flickr.com/photos/patrick_nouhailler/">http://www.flickr.com/photos/patrick_nouhailler/</a></li>
-                <li><a href="http://www.flickr.com/photos/aigle_dore/">http://www.flickr.com/photos/aigle_dore/</a></li>
-                <li><a href="http://www.flickr.com/photos/natalialopes/">http://www.flickr.com/photos/natalialopes/</a></li>
-                <li><a href="http://www.flickr.com/photos/macorig/">http://www.flickr.com/photos/macorig/</a></li>
+                {{#each attribution}}
+                    <li>
+                        <a href="{{.}}">{{.}}</a>
+                    </li>
+                {{/each}}
             </ul>
         </div>
         
