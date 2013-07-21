@@ -32,8 +32,14 @@
             <section id="instructions">
                 <ol>
                     <li>Turn on your webcam &amp; accept the browser popup</li>
-                    <li>Point the webcam to a uniform color surface.<br />Saturated green works best: <i class="icon icon-sign-blank"></i></li>
-                    <li>Move away from the scene, and click <a href="#">calibrate</a></li>
+                    <li>
+                        Point the webcam to a uniform color surface.<br />
+                        Saturated green works best: <i class="icon icon-sign-blank suggested"></i>
+                    </li>
+                    <li>
+                        Move away from the scene, and click <a id="calibrate" href="#">calibrate</a>
+                        Result: <i class="icon icon-sign-blank calibrated"></i>
+                    </li>
                     <li>Now choose from any of the background photos &amp; videos below, and have fun!</li>
                 </ol>
                 <i class="icon icon-hand-down"></i>
@@ -86,12 +92,16 @@
         <script src="/js/seriously.js"></script>
         <script src="/js/seriously.chroma.js"></script>
         <script src="/js/seriously.blend.js"></script>
+        <script src="/js/color-thief.js"></script>
         <script src="/js/script.js"></script>
         
         <script>
             $(document).ready(function() {
+                
                 window.ChromaCam.start();
+                
                 $('#backgrounds li').on('click', window.ChromaCam.loadBackground);
+                $('#calibrate').on('click', window.ChromaCam.calibrate);
                 
                 $('#attribution').magnificPopup({
                     type: 'inline',
@@ -100,10 +110,12 @@
                     closeOnBgClick: true,
                     closeBtnInside: true
                 });
+                
                 $(document).on('click', '.popup-modal-dismiss', function(e) {
                     e.preventDefault();
                     $.magnificPopup.close();
                 });
+                
             });
         </script>
 
