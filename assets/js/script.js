@@ -1,4 +1,3 @@
-var chroma = require('./chroma');
 var blend  = null;
 
 window.ChromaCam = {};
@@ -9,8 +8,6 @@ window.ChromaCam.start = function() {
 };
 
 window.ChromaCam.loadBackground = function(e) {
-    // var type = $(e.currentTarget).data('type');
-    // var file = $(e.currentTarget).data('file');
     var type = e.currentTarget.getAttribute('data-type');
     var file = e.currentTarget.getAttribute('data-file');
     if (type === 'video') {
