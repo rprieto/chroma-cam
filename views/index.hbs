@@ -5,6 +5,7 @@
         <title>Chroma cam</title>
         <link rel="stylesheet" href="/css/style.css" type="text/css" />
         <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+        <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css" />
     </head>
 
     <body>
@@ -62,9 +63,16 @@
             <img id="backgroundPhoto" />
         </div>
         
-        <div id="attribution">
-            All backgrounds used in this demo are under Creative Commons license.
-            Many thanks to the following photographers:
+        <a id="attribution" href="#attribution-popup">
+            <i class="icon icon-gittip"></i>
+            Creative commons
+        </a>
+        
+        <div id="attribution-popup" class="white-popup-block mfp-hide">
+            <h1>Attribution</h1>
+            <button title="Close (Esc)" type="button" class="mfp-close">×</button>
+            <p>All backgrounds used in this demo are under Creative Commons license.</p>
+            <p>Many thanks to the following photographers:</p>
             <ul>
                 {{#each attribution}}
                     <li>
@@ -74,21 +82,29 @@
             </ul>
         </div>
         
+        <script src="/js/jquery-2.0.3.min.js"></script>
+        <script src="/js/jquery.magnific-popup.min.js"></script>
         <script src="/js/seriously.js"></script>
         <script src="/js/seriously.chroma.js"></script>
         <script src="/js/seriously.blend.js"></script>
         <script src="/js/script.js"></script>
         
         <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                
+            $(document).ready(function() {
                 window.ChromaCam.start();
+                $('#backgrounds li').on('click', window.ChromaCam.loadBackground);
                 
-                var bgs = document.querySelectorAll('#backgrounds li');
-                [].forEach.call(bgs, function(el) {
-                    el.addEventListener('click', window.ChromaCam.loadBackground, false);
+                $('#attribution').magnificPopup({
+                    type: 'inline',
+                    preloader: false,
+                    modal: true,
+                    closeOnBgClick: true,
+                    closeBtnInside: true
                 });
-                
+                $(document).on('click', '.popup-modal-dismiss', function(e) {
+                    e.preventDefault();
+                    $.magnificPopup.close();
+                });
             });
         </script>
 
