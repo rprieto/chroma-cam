@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #000;
+    font-size: 1.2em;
+}
+
 a {
     color: #0088cc;
     text-decoration: none;
@@ -13,36 +18,81 @@ a:hover {
     color: #ff4800;
 }
 
+nav {
+    float:right;
+}
+
+nav li {
+    display: inline-block;
+    margin-right: 0.5em;
+    padding: 0.7em;
+}
+
+nav li .icon {
+    margin-right: 0.5em;
+}
+
+header .clear {
+    clear: both;
+}
+
 aside {
-    bottom: 1em;
-    left: 1em;
+    background-color: #fff;
+    bottom: 0;
+    color: #333;
+    left: 0;
     overflow: scroll;
+    padding: 1em 3em;
     position: absolute;
-    top: 1em;
-    width: 14em;
+    top: 4em;
+    width: 28em;
+    z-index: 0;
 }
 
 #main {
-    margin-left: 15em;
+    margin-left: 28em;
 }
 
 header {
-    background-color: #fff;
-    padding: 1em 0;
-    text-align: center;
+    background-color: #eee;
+    border-bottom: 1px solid #999;
+    padding: 0.5em 0 0.5em 2em;
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
 }
 
 h1 {
-    font-size: 2em;
+    color: #333;
+    float: left;
     font-weight: bold;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    padding: 0.7em;
+}
+
+#instructions {
+    ol {
+        list-style-type: decimal;
+        margin: 1em;
+    }
+    li {
+        line-height: 1.2em;
+        margin-bottom: 0.7em;
+    }
+    .icon-sign-blank {
+        color: #60cc30;
+    }
+    .icon-hand-down {
+        display: block;
+        font-size: 2em;
+        margin: 1em 0;
+        text-align: center;
+    }
 }
 
 #backgrounds li {
     border: 1px solid #fff;
     cursor: pointer;
-    float: left;
+    display: inline-block;
     height: 7em;
     overflow: hidden;
     position: relative;
@@ -68,15 +118,10 @@ h1 {
 }
 
 #output {
+    background-color: #eee;
+    border: 1px solid #999;
     display: block;
     margin: 0 auto;
-}
-
-#attribution {
-    bottom: 1em;
-    font-size: 1.2em;
-    position: absolute;
-    right: 1em;
 }
 
 .white-popup-block {

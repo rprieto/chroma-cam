@@ -10,20 +10,35 @@
 
     <body>
         
-        <div id="main">
+        <header>
+            
+            <h1>
+                <i class="icon icon-facetime-video"></i>
+                Chroma cam
+            </h1>
 
-            <header>
-                <h1>Chroma cam</h1>
-            </header>
+            <nav>
+                <ul>
+                    <li><a id="attribution" href="#attribution-popup"><i class="icon icon-question-sign"></i></a></li>
+                </ul>
+            </nav>
+            
+            <div class="clear"></div>
 
-            <canvas id="output" width="640" height="480">
-                <p>Sorry your browser does not support HTML5</p>
-            </canvas>
-
-        </div>
+        </header>
         
         <aside>
 
+            <section id="instructions">
+                <ol>
+                    <li>Turn on your webcam &amp; accept the browser popup</li>
+                    <li>Point the webcam to a uniform color surface.<br />Saturated green works best: <i class="icon icon-sign-blank"></i></li>
+                    <li>Move away from the scene, and click <a href="#">calibrate</a></li>
+                    <li>Now choose from any of the background photos &amp; videos below, and have fun!</li>
+                </ol>
+                <i class="icon icon-hand-down"></i>
+            </section>
+            
             <ul id="backgrounds">
                 <li data-type="video" data-file="/videos/NewRow.mp4">
                     <i class="icon icon-play"></i>
@@ -57,19 +72,20 @@
 
         </aside>
         
+        <section id="main">
+            <canvas id="output" width="640" height="480">
+                <p>Sorry your browser does not support HTML5</p>
+            </canvas>
+            <a href="#"><i class="icon icon-resize-full"></i>full screen</a>
+        </section>
+        
         <div id="source">
             <video id="webcam" autoplay=""></video>
             <video id="backgroundVideo" loop="loop" preload="auto"></video>
             <img id="backgroundPhoto" />
         </div>
         
-        <a id="attribution" href="#attribution-popup">
-            <i class="icon icon-gittip"></i>
-            Creative commons
-        </a>
-        
         <div id="attribution-popup" class="white-popup-block mfp-hide">
-            <h1>Attribution</h1>
             <button title="Close (Esc)" type="button" class="mfp-close">×</button>
             <p>All backgrounds used in this demo are under Creative Commons license.</p>
             <p>Many thanks to the following photographers:</p>
